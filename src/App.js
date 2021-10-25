@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { connect } from 'react-redux'
 import AddForm from './components/AddForm';
 import SmurfList from './components/SmurfList';
 import Header from './components/Header';
@@ -22,7 +22,9 @@ class App extends Component {
   }
 }
 
-export default App;
+
+
+export default connect()(App);
 
 //Task List:
 //1. Connect the fetchSmurfs actions to the App component.
