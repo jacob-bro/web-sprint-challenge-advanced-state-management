@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const LOADING = 'LOADING';
 export const SUCCESS = 'SUCCESS';
-export const ERROR = 'ERROR'
+export const FAIL = 'FAIL'
 export const ADDSMURF = 'ADDSMURF'
 
 //Task List:
@@ -11,8 +11,12 @@ export const ADDSMURF = 'ADDSMURF'
 //2. Add a standard action that allows us to add new smurf (including the name, nickname, position, summary)
 //3. Add a standard action that allows us to set the value of the error message slice of state.
 
-export const addSmurf = (name, nickname, position, summary) => {
-    return {type: ADDSMURF, name: name, nickname: nickname, position: position, summary: summary}
+// export const addSmurf = (name, nickname, position, summary) => {
+//     return {type: ADDSMURF, name: name, nickname: nickname, position: position, summary: summary}
+// };
+
+export const plusSmurf = (smurfInfo) => {
+    return {type: ADDSMURF, payload: smurfInfo}
 };
 
 
@@ -24,5 +28,5 @@ export const fetchSmurf = (dispatch) => {
         dispatch({type: SUCCESS, payload: res.data})})
     .catch((err) => {
        console.log(err);
-       dispatch({ type: ERROR, payload: err})})
+       dispatch({ type: FAIL, payload: err})})
 };

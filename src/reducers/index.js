@@ -1,4 +1,4 @@
-import { LOADING, ERROR, SUCCESS, ADDSMURF } from '../actions/index'
+import { LOADING, FAIL, SUCCESS, ADDSMURF } from '../actions/index'
 
 export const initialState = {
     smurfs: [],
@@ -10,12 +10,12 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         case LOADING:
             return {...state, loading: true,};
-        case ERROR:
+        case FAIL:
             return {...state, loading: false, error: action.payload,};
         case SUCCESS:
             return {...state, loading: false, smurfs: action.payload,}
         case ADDSMURF:
-            return {...state, name: action.name, nickname: action.nickname, position: action.position, summary: action.summary}
+            return {...state, name: action.payload.name, nickname: action.payload.nickname, position: action.payload.position, summary: action.payload.summary}
         default:
             return state;
     }
